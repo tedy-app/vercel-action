@@ -31,7 +31,7 @@ if (process.env.VERCEL_ENV === "preview") {
     },
   ).then((res) => res.json());
   if (
-    !deployment.name.startsWith("snaplet-action-") ||
+    !deployment.name.startsWith("snaplet-action-") &&
     !process.env.NEXT_PUBLIC_URL
   ) {
     process.exit(0);
@@ -39,4 +39,3 @@ if (process.env.VERCEL_ENV === "preview") {
 }
 
 process.exit(1);
-
