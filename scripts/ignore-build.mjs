@@ -31,11 +31,7 @@ if (process.env.VERCEL_ENV === "preview") {
     },
   ).then((res) => res.json());
   const branch = deployment.meta.gitBranch;
-  if (
-    !deployment.name.startsWith("snaplet-action-") &&
-    branch !== "staging" &&
-    branch !== "production"
-  ) {
+  if (!deployment.name.startsWith("snaplet-action-") && branch !== "staging") {
     process.exit(0);
   }
 }
