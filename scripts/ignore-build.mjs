@@ -30,7 +30,10 @@ if (process.env.VERCEL_ENV === "preview") {
       headers: { Authorization: `Bearer ${process.env.VERCEL_ACCESS_TOKEN}` },
     },
   ).then((res) => res.json());
-  if (!deployment.name.startsWith("snaplet-action-")) {
+  if (
+    !deployment.name.startsWith("snaplet-action-") &&
+    !process.env.NEXT_PUBLIC_URL
+  ) {
     process.exit(0);
   }
 }
