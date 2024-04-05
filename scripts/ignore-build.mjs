@@ -30,9 +30,9 @@ if (process.env.VERCEL_ENV === "preview") {
       headers: { Authorization: `Bearer ${process.env.VERCEL_ACCESS_TOKEN}` },
     },
   ).then((res) => res.json());
-  if (
-    !deployment.name.startsWith("snaplet-action-")
-  ) {
+  const isNotSnapletGenerated = !deployment.name.startsWith("snaplet-action-");
+  const isNotStaging = deployment.data?.gitSource?.ref !== 'staging'
+  if (isNotSnapletGenerated && isNotStaging )) {
     process.exit(0);
   }
 }
