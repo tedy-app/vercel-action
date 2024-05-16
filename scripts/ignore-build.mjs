@@ -21,7 +21,7 @@ if (process.env.VERCEL_ENV === "preview") {
   const isSnapletDeployment = deployment.name.startsWith('snaplet-action-');
   const isStaging = deployment.data?.gitSource?.ref === 'staging'
   
-  if (isStaging) {
+  if (isStaging && !!process.env.DIRECT_URL) {
     process.exit(1)
   }
   if (!isSnapletDeployment) {
